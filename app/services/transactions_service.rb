@@ -6,46 +6,46 @@ class TransactionsService
   end
 
   def exec
-    if not verifyResponseAutorizeTransactionRequest(autorizeTransactionRequest) return false
+    return false unless verify_response_autorize_transaction_request(fetch_authorization_request)
 
-    makeTransaction
+    make_transaction
 
     NotifyJob.perform_later
-    return true
+    true
   end
 
-  def payerIsLogista
+  def payer_logista
     @payer.logista?
   end
 
-  def verifyIdPayerPayee
+  def verify_id_payer_payee
     @payer.id == @payee.id
   end
 
-  def haveBalance
+  def balance?
     @payer.balance > @value
   end
 
-  def buildTransaction(entity, kind)
+  def build_transaction(entity, kind)
     Transaction.create!(user_id: entity.id, amount: @value, kind:)
   end
 
-  def makeTransaction
+  def make_transaction
     ActiveRecord::Base.transaction do
-      buildTransaction(@payer, :withdraw)
-      buildTransaction(@payee, :deposit)
+      build_transaction(@payer, :withdraw)
+      build_transaction(@payee, :deposit)
     end
   end
 
   private
 
-  def verifyResponseAutorizeTransactionRequest(response)
+  def verify_response_autorize_transaction_request(response)
     response.code == 200 &&
-    response['status'] == 'success' &&
-    response['data']['authorization']
+      response['status'] == 'success' &&
+      response['data']['authorization']
   end
 
-  def autorizeTransactionRequest
+  def fetch_authorization_request
     HTTParty.get('https://util.devi.tools/api/v2/authorize')
   end
 end

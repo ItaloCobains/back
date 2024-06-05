@@ -5,20 +5,20 @@ class TransactionsController < ApplicationController
     return render json: { message: 'Usuário não encontrado' }, status: :not_found if payer.nil? || payee.nil?
 
     transaction_service = TransactionsService.new(
-      payer: ,
-      payee: ,
+      payer:,
+      payee:,
       value: transaction_params[:value]
     )
 
-    if transaction_service.payerIsLogista
+    if transaction_service.payer_logista
       return render json: { message: 'Usuário logista não pode realizar transações' }, status: :unprocessable_entity
     end
 
-    if transaction_service.verifyIdPayerPayee
+    if transaction_service.verify_id_payer_payee
       return render json: { message: 'Usuário não pode transferir para si mesmo' }, status: :unprocessable_entity
     end
 
-    if not transaction_service.haveBalance
+    unless transaction_service.balance?
       return render json: { message: 'Saldo insuficiente' }, status: :unprocessable_entity
     end
 
