@@ -2,10 +2,10 @@
 
 one:
   user: Caio_User
-  amount: 9.99
+  amount: 1500.0
   kind: 0
 
 two:
   user: Jose_Logista
-  amount: 9.99
+  amount: 9000.99
   kind: 1
