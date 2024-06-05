@@ -6,4 +6,7 @@ class Transaction < ApplicationRecord
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :kind, presence: true, inclusion: { in: kinds.keys }
   validates :user, presence: true
+
+  scope :deposits, -> { where(kind: :deposit) }
+  scope :withdrawals, -> { where(kind: :withdraw) }
 end
