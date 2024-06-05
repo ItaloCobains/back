@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Caio_User:
+  full_name: Caio
+  cpf: 23456789012
+  email:  caio@gmail.com
+  password: caio12345
+  kind: 0
+
+Jose_Logista:
+  full_name: Jose
+  cpf:  12345678901
+  email: jose@gmail.com
+  password: jose09213
+  kind: 1
