@@ -23,7 +23,7 @@ class TransactionsService
   end
 
   def balance?
-    @payer.balance > @value
+    @payer.balance > BigDecimal(@value)
   end
 
   def build_transaction(entity, kind)

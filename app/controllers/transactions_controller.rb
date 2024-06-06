@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
     return render json: { message: 'Usuário não encontrado' }, status: :not_found if payer.nil? || payee.nil?
 
     transaction_service = TransactionsService.new(
-      payer:,
-      payee:,
-      value: transaction_params[:value]
+      payer,
+      payee,
+      transaction_params[:value]
     )
 
     if transaction_service.payer_logista
