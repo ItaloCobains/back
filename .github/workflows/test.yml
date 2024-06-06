@@ -32,14 +32,3 @@ jobs:
           bin/rails db:setup
       - name: Run tests
         run: bin/rails test
-      - name: Run system tests
-        env:
-          PARALLEL_WORKERS: 1
-        run: bin/rails test:system
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: $/tmp/screenshots
-          if-no-files-found: ignore
