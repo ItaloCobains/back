@@ -14,8 +14,8 @@ class TransactionsService
     true
   end
 
-  def payer_logista
-    @payer.logista?
+  def payer_lojista
+    @payer.lojista?
   end
 
   def verify_id_payer_payee

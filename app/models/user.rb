@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
-  enum kind: { usuario: 0, logista: 1 }
+  enum kind: { usuario: 0, lojista: 1 }
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :cpf, presence: true, uniqueness: true, format: { with: /\A\d{11}\z/ }

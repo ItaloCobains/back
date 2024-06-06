@@ -3,7 +3,7 @@ require 'test_helper'
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @payer = users(:Caio_User)
-    @payee = users(:Jose_Logista)
+    @payee = users(:Jose_lojista)
 
     @valid_attributes = {
       payer: @payer.id,
@@ -25,10 +25,10 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, 'Usuário não encontrado'
   end
 
-  test "should return unprocessable_entity if payer is logista" do
+  test "should return unprocessable_entity if payer is lojista" do
     post transfer_url, params: { payer: @payee.id, payee: @payer.id, value: 100.0 }
     assert_response :unprocessable_entity
-    assert_includes @response.body, 'Usuário logista não pode realizar transações'
+    assert_includes @response.body, 'Usuário lojista não pode realizar transações'
   end
 
   test "should return unprocessable_entity if payer is payee" do

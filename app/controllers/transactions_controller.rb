@@ -10,8 +10,8 @@ class TransactionsController < ApplicationController
       transaction_params[:value]
     )
 
-    if transaction_service.payer_logista
-      return render json: { message: 'Usuário logista não pode realizar transações' }, status: :unprocessable_entity
+    if transaction_service.payer_lojista
+      return render json: { message: 'Usuário lojista não pode realizar transações' }, status: :unprocessable_entity
     end
 
     if transaction_service.verify_id_payer_payee

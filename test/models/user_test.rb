@@ -48,8 +48,8 @@ class UserTest < ActiveSupport::TestCase
     assert @user.usuario?
   end
 
-  test "should kind be logista" do
-    @user.kind = "logista"
-    assert @user.logista?
+  test "should kind be lojista" do
+    @user.kind = "lojista"
+    assert @user.lojista?
   end
 end

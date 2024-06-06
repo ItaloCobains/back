@@ -7,7 +7,7 @@ Caio_User:
   password: caio12345
   kind: 0
 
-Jose_Logista:
+Jose_lojista:
   full_name: Jose
   cpf:  12345678901
   email: jose@gmail.com
