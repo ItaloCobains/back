@@ -192,8 +192,8 @@ GEM
       psych (>= 4.0.0)
     reline (0.5.8)
       io-console (~> 0.5)
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
+    rexml (3.3.6)
+      strscan
     ruby-graphviz (1.2.5)
       rexml
     sqlite3 (1.7.3-aarch64-linux)
